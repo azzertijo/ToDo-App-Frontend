@@ -1,11 +1,21 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent { }
+export class LoginComponent {
+  username: string = '';
+  password: string = '';
+
+  login() {
+    console.log('Usuario:', this.username);
+    console.log('Contraseña:', this.password);
+    alert('Iniciando sesión...');
+  }
+}

@@ -1,50 +1,69 @@
-
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Fondo amarillo claro en toda la pantalla */
+body, .login-container {
+  margin: 0;
   height: 100vh;
-  background-color: #f8f4e3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6ebbc; 
+  position: relative;
 }
 
-.login-card {
-  background: #fff3c4;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+/* Ícono de usuario */
+.user-icon {
+  font-size: 80px;
+  color: rgb(51, 22, 17);
+  margin-bottom: 30px;
 }
 
-.login-header .user-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 10px;
+/* Formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  font-size: 20px;
 }
 
+/* Estilos de los inputs */
 .input-field {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  width: 300px;
+  padding: 15px;
+  border: 3px solid #6b543d; 
+  border-radius: 15px;
+  font-size: 18px;
+  text-align: center;
+  background-color: white;
 }
 
-.login-button, .register-button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
+/* Botón Login */
 .login-button {
-  background-color: #d4a373;
-  color: white;
+  width: 180px;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #e1a556; 
+  color: black;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* Botón Registrarse */
 .register-button {
-  background-color: #a3b18a;
-  color: white;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: #e1a556;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
 }
