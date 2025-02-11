@@ -1,3 +1,69 @@
-:host {
-  display: block;
+/* Fondo amarillo claro en toda la pantalla */
+body, .register-container {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6ebbc; 
+  position: relative;
+}
+
+/* Ícono de usuario */
+.user-icon {
+  font-size: 80px;
+  color: rgb(51, 22, 17);
+  margin-bottom: 30px;
+}
+
+/* Formulario */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  font-size: 20px;
+}
+
+/* Estilos de los inputs */
+.input-field {
+  width: 300px;
+  padding: 15px;
+  border: 3px solid #6b543d; 
+  border-radius: 15px;
+  font-size: 18px;
+  text-align: center;
+  background-color: white;
+}
+
+/* Botón registro */
+.register-button {
+  width: 180px;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #e1a556; 
+  color: black;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón login */
+.login-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: #e1a556;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
 }

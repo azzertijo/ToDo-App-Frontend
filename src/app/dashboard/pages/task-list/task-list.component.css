@@ -1,3 +1,80 @@
-:host {
-  display: block;
+.task-list-container {
+  background-color: #f8f3d7;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 28px;
+  color: #8b572a;
+  text-align: left;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #d1a977;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.active {
+  background-color: #b5833a;
+}
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d8bb76;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.task-info h3 {
+  font-size: 18px;
+  color: #5a3e1b;
+}
+
+.task-info p {
+  font-size: 14px;
+  color: #82654e;
+}
+
+.status-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.status-icon.done {
+  background-color: #78c24c;
+}
+
+.status-icon.not-done {
+  background-color: #d14b3d;
+}
+
+.add-task-button {
+  background-color: #b6df46;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
 }

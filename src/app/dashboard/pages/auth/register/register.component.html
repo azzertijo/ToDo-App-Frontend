@@ -1,1 +1,18 @@
-<p>register works!</p>,
+<div class="register-container">
+    <button class="login-button" (click)="login()" >Login</button>
+  
+    <div class="register-header">
+      <span class="user-icon">👤</span>
+    </div>
+  
+    <div class="register-form">
+      <label for="username">Usuario</label>
+      <input type="text" id="username" placeholder="Usuario" class="input-field" [(ngModel)]="username" />
+      
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" placeholder="Contraseña" class="input-field" [(ngModel)]="password" />
+      
+      <button class="register-button" (click)="register()">Register</button>
+    </div>
+  </div>
+  
