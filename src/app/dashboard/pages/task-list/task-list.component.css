@@ -40,14 +40,22 @@
   margin-bottom: 10px;
 }
 
+.task-info {
+  width: 80%;
+  height: auto;
+}
+
 .task-info h3 {
   font-size: 18px;
-  color: #5a3e1b;
+  color: #5a3e1b; 
+  cursor: pointer;
+  width: 80%;
 }
 
 .task-info p {
   font-size: 14px;
   color: #82654e;
+  width: 80%;
 }
 
 .status-icon {
