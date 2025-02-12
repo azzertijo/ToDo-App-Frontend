@@ -5,6 +5,7 @@ import { AddTaskComponent } from '../add-task/add-task.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TaskDetailComponent } from '../task-detail/task-detail.component';
 import { AddMemberComponent } from '../add-member/add-member.component';
+import { AddGroupComponent } from '../add-group/add-group.component';
 
 @Component({
   selector: 'app-task-list',
@@ -41,6 +42,10 @@ export class TaskListComponent {
 
   onCode(): void {
     this.modalSvc.open(AddMemberComponent, {maxWidth: 300, minWidth: 300, maxHeight: 420, minHeight: 420});
+  }
+
+  onAddGroup(): void {
+    this.modalSvc.open(AddGroupComponent, {maxWidth: 300, minWidth: 300, maxHeight: 420, minHeight: 420});
   }
 
 

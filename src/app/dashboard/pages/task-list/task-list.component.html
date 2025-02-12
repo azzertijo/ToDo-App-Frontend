@@ -4,7 +4,7 @@
     <div class="filter-buttons">
       <button class="btn active">Hechas</button>
       <button class="btn" (click)="onCode()">No hechas</button>
-      <button class="btn">↕</button>
+      <button class="btn" (click)="onAddGroup()">↕</button>
     </div>
   
     <div class="task-card" *ngFor="let task of tasks; let i = index">
