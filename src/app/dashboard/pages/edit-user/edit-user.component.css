@@ -1,3 +1,67 @@
-:host {
-  display: block;
+
+.edit-user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f4e3;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 320px; 
 }
+
+
+.profile-pic {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+
+.label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #6b3e2f; 
+  margin-bottom: 5px;
+}
+
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #6b3e2f;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: white;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+
+.invite-code {
+  width: 150px;
+  padding: 10px;
+  background-color: #d4a373; 
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+
+.save-button {
+  width: 120px;
+  padding: 10px;
+  background-color: #e1a556;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+}
+

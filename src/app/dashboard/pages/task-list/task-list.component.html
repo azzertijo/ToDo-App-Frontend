@@ -1,21 +1,34 @@
 <div class="task-list-container">
-    <h1 class="title">Lista personal</h1>
-  
-    <div class="filter-buttons">
-      <button class="btn active">Hechas</button>
-      <button class="btn" (click)="onCode()">No hechas</button>
-      <button class="btn" (click)="onAddGroup()">↕</button>
-    </div>
-  
-    <div class="task-card" *ngFor="let task of tasks; let i = index">
-      <div class="task-info"  (click)="onClickTask(task)">
-        <h3>{{ task.name }}</h3>
-        <p>{{ task.date }}</p>
-      </div>
-      <div class="status-icon" [ngClass]="{ 'done': task.done, 'not-done': !task.done }" (click)="toggleTaskStatus(i)">
-      </div>
-    </div>
-  
-    <button class="add-task-button"  (click)="onClickNewTask()">+</button>
+  <button *ngIf="listType === 'group'" class="invite-btn" (click)="onCode()">Invitar miembros +</button>
+
+  <div class="header-container">
+      
+      <h1 class="title">
+          {{ listType === 'personal' ? 'Lista personal' : groupName }}
+      </h1>
+
+      
+      <button *ngIf="isAdmin" class="settings-btn">⚙</button>
+      <button *ngIf="!isAdmin && listType === 'group'" class="info-btn">ℹ</button>
   </div>
+
   
+  <div class="filter-buttons">
+      <button class="btn active">Hechas</button>
+      <button class="btn">No hechas</button>
+      <button class="btn">↕</button>
+  </div>
+
+ 
+  <div class="task-card" *ngFor="let task of tasks; let i = index">
+      <div class="task-info" (click)="onClickTask(task)">
+          <h3>{{ task.name }}</h3>
+          <p>{{ task.date }}</p>
+      </div>
+      <div class="status-icon" [ngClass]="{ 'done': task.done, 'not-done': !task.done }"
+          (click)="toggleTaskStatus(i)">
+      </div>
+  </div>
+
+  <button class="add-task-button" (click)="onClickNewTask()">+</button>
+</div>

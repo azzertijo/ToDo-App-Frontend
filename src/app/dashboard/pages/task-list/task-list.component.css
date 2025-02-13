@@ -1,13 +1,93 @@
+
 .task-list-container {
   background-color: #f8f3d7;
   padding: 20px;
   border-radius: 10px;
+  position: relative;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 10px;
 }
 
 .title {
   font-size: 28px;
   color: #8b572a;
   text-align: left;
+}
+
+.settings-btn,
+.info-btn {
+  background-color: #d1a977;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.settings-btn {
+  background-color: #b5833a;
+}
+
+.info-btn {
+  background-color: #8b572a;
+}
+
+.invite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f4a261;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.add-task-button {
+  background-color: #b6df46;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d8bb76;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.task-info {
+  width: 80%;
+}
+
+.task-info h3 {
+  font-size: 18px;
+  color: #5a3e1b; 
+  cursor: pointer;
+}
+
+.task-info p {
+  font-size: 14px;
+  color: #82654e;
 }
 
 .filter-buttons {
@@ -30,32 +110,8 @@
   background-color: #b5833a;
 }
 
-.task-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #d8bb76;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.task-info {
-  width: 80%;
-  height: auto;
-}
-
-.task-info h3 {
+.btn:last-child {
   font-size: 18px;
-  color: #5a3e1b; 
-  cursor: pointer;
-  width: 80%;
-}
-
-.task-info p {
-  font-size: 14px;
-  color: #82654e;
-  width: 80%;
 }
 
 .status-icon {
@@ -71,18 +127,4 @@
 
 .status-icon.not-done {
   background-color: #d14b3d;
-}
-
-.add-task-button {
-  background-color: #b6df46;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 24px;
-  cursor: pointer;
 }

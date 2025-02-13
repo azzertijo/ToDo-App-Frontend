@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalService } from '../../../services/modal.service';
 import { AddTaskComponent } from '../add-task/add-task.component';
@@ -14,13 +14,31 @@ import { AddGroupComponent } from '../add-group/add-group.component';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent {
+export class TaskListComponent implements OnInit {
   private readonly modalSvc = inject(ModalService);
+
+  listType: 'personal' | 'group' = 'personal';
+  isAdmin: boolean = false;
+  groupName?: string; 
+
   tasks = [
     { name: 'Comprar comida al perro', date: '05 - Febrero - 2025', description: 'Comprar pedigree en Walmart', done: true },
-    { name: 'Pagar luz', date: '02 - Febrero - 2025',description: 'Pagar 550 pesos de luz', done: true },
-    { name: 'Tintorería', date: '01 - Febrero - 2025',description: 'Pasar por el saco a la tintorería', done: false }
+    { name: 'Pagar luz', date: '02 - Febrero - 2025', description: 'Pagar 550 pesos de luz', done: true },
+    { name: 'Tintorería', date: '01 - Febrero - 2025', description: 'Pasar por el saco a la tintorería', done: false }
   ];
+
+  ngOnInit() {
+    // CODIGO PARA PROBAR DIFERENTES TIPOS DE GRUPOS
+    this.loadList('group', 'Grupo 1', true);  // Prueba como ADMIN de un grupo
+    //this.loadList('group', 'Grupo 1', false); // Prueba como MIEMBRO de un grupo
+    // this.loadList('personal');  // Prueba la LISTA PERSONAL
+  }
+
+  loadList(type: 'personal' | 'group', groupName?: string, isAdmin: boolean = false) {
+    this.listType = type;
+    this.groupName = groupName;
+    this.isAdmin = isAdmin;
+  }
 
   toggleTaskStatus(index: number) {
     this.tasks[index].done = !this.tasks[index].done;
@@ -36,6 +54,8 @@ export class TaskListComponent {
     });
   }
 
+  
+
   onClickNewTask(): void {
     this.modalSvc.open(AddTaskComponent, {maxWidth: 300, minWidth: 300, maxHeight: 420, minHeight: 420});
   }
@@ -47,6 +67,4 @@ export class TaskListComponent {
   onAddGroup(): void {
     this.modalSvc.open(AddGroupComponent, {maxWidth: 300, minWidth: 300, maxHeight: 420, minHeight: 420});
   }
-
-
 }

@@ -35,3 +35,11 @@
   padding: 20px;
   background-color: #F8F4DC;
 }
+
+.user-profile img {
+  width: 50px;  /* Tamaño fijo */
+  height: 50px; /* Tamaño fijo */
+  border-radius: 50%; /* Hace la imagen circular */
+  object-fit: cover; /* Evita que la imagen se deforme */
+  border: 2px solid white; /* Opcional: Borde para mejorar visibilidad */
+}
