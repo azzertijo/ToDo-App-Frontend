@@ -13,7 +13,7 @@ export const routes: Routes = [
     component: DashboardComponent, 
     children: [
       { path: 'personalTasks', component: TaskListComponent },
-      { path: 'group-detail', component: GroupDetailComponent },
+      { path: 'groupTasks/:id', component: TaskListComponent },
       { path: '', redirectTo: 'personalTasks', pathMatch: 'full' }
     ]
   },

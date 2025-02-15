@@ -1,11 +1,11 @@
 <div class="modal-content">
-    <h2 class="mat-dialog-title">{{ data.name }}</h2>
+    <h2 class="mat-dialog-title">{{ data.title }}</h2>
     <button mat-icon-button class="close-button" mat-dialog-close>
       ✖
     </button>
   
     <div class="task-info">
-      <h3>{{ data.date }}</h3>
+      <h3>{{ data.hour | date:"MMM dd, yyyy 'a las' hh:mm a"}}</h3>
       <p class="description">{{ data.description }}</p>
     </div>
 

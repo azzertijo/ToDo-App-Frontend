@@ -4,10 +4,12 @@
         <img src=".\assets\user-avatar.png" alt="Usuario" (click)="onEditUser()">
         <p>Marcos López</p>
       </div>
+     
+      <!--Agregar dinamicamente los grupos-->
       <nav class="menu">
-        <button> P </button>
-        <button> G1 </button>
-        <button> G2 </button>
+        <button (click)="onOpenPersonal()"> P </button>
+        <button (click)="onOpenGroup1()"> G1 </button>
+        <button (click)="onOpenGroup2()"> G2 </button>
         <button class="add-group" (click)= "onAddGroup()"> + </button>
       </nav>
     </aside>

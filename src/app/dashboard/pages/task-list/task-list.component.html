@@ -9,7 +9,7 @@
 
       
       <button *ngIf="isAdmin" class="settings-btn">⚙</button>
-      <button *ngIf="!isAdmin && listType === 'group'" class="info-btn">ℹ</button>
+      <button *ngIf="!isAdmin && listType === 'group'" class="info-btn" (click)="onClickGroupDetail()">ℹ</button>
   </div>
 
   
@@ -19,16 +19,22 @@
       <button class="btn">↕</button>
   </div>
 
- 
-  <div class="task-card" *ngFor="let task of tasks; let i = index">
-      <div class="task-info" (click)="onClickTask(task)">
-          <h3>{{ task.name }}</h3>
-          <p>{{ task.date }}</p>
-      </div>
-      <div class="status-icon" [ngClass]="{ 'done': task.done, 'not-done': !task.done }"
-          (click)="toggleTaskStatus(i)">
-      </div>
-  </div>
+
+        <div class="task-card" *ngFor="let task of taskList; index as i">
+            <div class="task-info" (click)="onClickTask(task)">
+                <h3>{{ task.title }}</h3>
+                <p>{{ task.hour | date:"MMM dd, yyyy 'at' hh:mm a"}}</p>
+            </div>
+            @if (task.status === 'done') {
+                <div class="status-icon" [ngClass]=" 'done'" >
+                    <!--(click)="toggleTaskStatus(i)-->
+                </div>
+            }@else {
+                <div class="status-icon" [ngClass]=" 'not-done'">
+                    <!--(click)="toggleTaskStatus(i)-->
+                </div>
+            }
+        </div>
 
   <button class="add-task-button" (click)="onClickNewTask()">+</button>
 </div>
