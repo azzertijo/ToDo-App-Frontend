@@ -6,8 +6,12 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { provideHttpClient, withFetch} from '@angular/common/http';
+import { TaskService } from './services/task.service';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideAnimations(), importProvidersFrom(MatDialogModule),]
+  providers: [provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideAnimations(), importProvidersFrom(MatDialogModule),provideHttpClient(withFetch()),
+    TaskService, 
+  ],
 
 };

@@ -1,1 +1,13 @@
-<p>group-detail works!</p>,
+<div class="modal-content">
+    <h2 class="mat-dialog-title">{{ data.groupName }}</h2>
+    <button mat-icon-button class="close-button" mat-dialog-close>✖</button>
+
+    <h3 class="section-title">Miembros</h3>
+    <ul class="members-list">
+        <li *ngFor="let miembro of data.members" class="member-item">
+            <span class="member-name">{{ miembro.name }}</span>
+        </li>
+    </ul>
+
+    <button class="exit-button" mat-dialog-close>Salir</button>
+</div>
