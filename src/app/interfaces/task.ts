@@ -4,9 +4,9 @@ export interface Task {
         location?: string;
         description?: string;
         status?: string;
-        author?: number;
+        authorId?: number;
         hour?: Date;
-        authorId? : number;
+        doneById? : number;
 }
 
 export interface TaskResponse {

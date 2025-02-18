@@ -22,21 +22,13 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class TaskListComponent implements OnInit {
   private readonly modalSvc = inject(ModalService);
-  //public taskService = inject(TaskService);
 
   constructor (private readonly taskService: TaskService) {}
 
   listType: 'personal' | 'group' = 'personal';
   isAdmin: boolean = false;
   groupName?: string; 
-
   taskList: Task[] = [];
-
-  //tasks = [
-    //{ name: 'Comprar comida al perro', date: '05 - Febrero - 2025', description: 'Comprar pedigree en Walmart', done: true },
-    //{ name: 'Pagar luz', date: '02 - Febrero - 2025', description: 'Pagar 550 pesos de luz', done: true },
-    //{ name: 'Tintorería', date: '01 - Febrero - 2025', description: 'Pasar por el saco a la tintorería', done: false }
-  //];
 
   members = [
     { name: 'Michelle Cedano'},
@@ -55,8 +47,7 @@ export class TaskListComponent implements OnInit {
     //this.loadList('group', 'Grupo 1', true);  // Prueba como ADMIN de un grupo
     //this.loadList('group', 'Grupo 1', false); // Prueba como MIEMBRO de un grupo
     //this.loadList('personal');  // Prueba la LISTA PERSONAL
-    //this.taskList$ = this.service.getTasks();
-    //console.log(this.service.getTasks());
+
     this.taskService.getTasks().subscribe((response: Task[]) => {
       Array.prototype.push.apply(this.taskList, response);
       console.log(response);
