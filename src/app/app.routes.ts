@@ -9,7 +9,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { 
-    path: '', 
+    path: 'personalTasks', 
     component: DashboardComponent, 
     children: [
       { path: 'personalTasks', component: TaskListComponent },

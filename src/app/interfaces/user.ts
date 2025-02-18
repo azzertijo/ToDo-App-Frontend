@@ -4,6 +4,7 @@ export interface User {
     password?: string;
     icon?: string;
     code?: string;
+    token?: string
 }
 
 export interface UsersResponse {

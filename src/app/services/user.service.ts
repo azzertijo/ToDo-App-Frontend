@@ -13,11 +13,11 @@ export class UserService {
   constructor(private readonly httpclient: HttpClient) { }
 
   login(name: string, password: string):Observable<User> {
-    return this.httpclient.post(`${environment.api}/auth/login`, { name, password });
+    return this.httpclient.post(`${environment.api}/auth/login`, { name, password }, { withCredentials: true });
   }
   
   register(name: string, password: string):Observable<User> {
-    return this.httpclient.post(`${environment.api}/auth/register`, { name, password});
+    return this.httpclient.post(`${environment.api}/auth/register`, { name, password, icon:'Prueba'}, { withCredentials: true });
   }
 
 }
