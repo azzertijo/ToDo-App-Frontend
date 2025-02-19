@@ -9,22 +9,30 @@ export class AuthService {
   constructor(private router: Router) {}
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('authToken');  
+    return this.isLocalStorageAvailable() && !!localStorage.getItem('authToken');
   }
 
   saveToken(token: string): void {
-    localStorage.setItem('authToken', token);
-    document.cookie = `authToken=${token}; path=/;`; 
+    if (this.isLocalStorageAvailable()) {
+      localStorage.setItem('authToken', token);
+      document.cookie = `authToken=${token}; path=/;`;
+    }
   }
 
   getToken(): string | null {
-    return localStorage.getItem('authToken');
+    return this.isLocalStorageAvailable() ? localStorage.getItem('authToken') : null;
+  }
+
+  private isLocalStorageAvailable(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
 
   logout(): void {
-    localStorage.removeItem('authToken');  
-    localStorage.removeItem('user');       
-    sessionStorage.clear();                
+    if (this.isLocalStorageAvailable()) {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('user');
+      sessionStorage.clear();
+    }            
     document.cookie = 'authToken=; Max-Age=0; path=/'; 
     this.router.navigate(['/login']);      
   }
