@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { UserService } from '../../../../services/user.service';
-import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../../../../services/Auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
-  providers: [CookieService], 
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -20,8 +19,12 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private userService: UserService,
-    private cookieService: CookieService
-  ) {} 
+    private authService: AuthService
+  ) {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/personalTasks']);
+    }
+  }
 
   login() {
     console.log('Enviando credenciales:', this.username, this.password);
@@ -34,12 +37,11 @@ export class LoginComponent {
         console.log('Token recibido desde el backend:', token);
   
         if (token) {
-          localStorage.setItem('authToken', token);
+          this.authService.saveToken(token); 
+          this.router.navigate(['/personalTasks']);
         } else {
           console.warn('No se recibió un token en la respuesta');
         }
-  
-        this.router.navigate(['/personalTasks']);
       },
       error: (err) => {
         console.error('Error en login:', err);
@@ -49,7 +51,7 @@ export class LoginComponent {
   }
 
   register() {
-    alert('Moviendo a registro...');
     this.router.navigate(['/register']);
   }
 }
+

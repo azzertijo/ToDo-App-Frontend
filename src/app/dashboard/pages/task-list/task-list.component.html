@@ -1,4 +1,7 @@
 <div class="task-list-container">
+
+  <button class="logout-btn" (click)="logout()"> Cerrar sesión</button>
+
   <button *ngIf="listType === 'group'" class="invite-btn" (click)="onCode()">Invitar miembros +</button>
 
   <div class="header-container">

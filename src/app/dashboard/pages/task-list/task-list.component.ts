@@ -11,6 +11,8 @@ import { TaskService } from '../../../services/task.service';
 import { Observable } from 'rxjs';
 import { Task, TaskResponse } from '../../../interfaces/task';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../../../services/Auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -23,7 +25,12 @@ import { HttpClientModule } from '@angular/common/http';
 export class TaskListComponent implements OnInit {
   private readonly modalSvc = inject(ModalService);
 
-  constructor (private readonly taskService: TaskService) {}
+  constructor (
+    private readonly taskService: TaskService,
+    private router: Router,
+    private authService: AuthService
+  
+  ) {}
 
   listType: 'personal' | 'group' = 'personal';
   isAdmin: boolean = false;
@@ -107,5 +114,10 @@ export class TaskListComponent implements OnInit {
 
   onOpenGroup2(): void {
     this.loadList('group', 'Grupo 2', true);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
