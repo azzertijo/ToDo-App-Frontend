@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { UserService } from '../../../../services/user.service';
-import { AuthService } from '../../../../services/Auth.service';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +15,8 @@ import { AuthService } from '../../../../services/Auth.service';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  
+
 
   constructor(
     private router: Router,
@@ -33,14 +35,15 @@ export class LoginComponent {
       next: (response: any) => {
         console.log('Respuesta del backend:', response);
   
-        const token = response.token;
+        const token = response.auth_token;
         console.log('Token recibido desde el backend:', token);
   
-        if (token) {
+        if (token && response.user) {
           this.authService.saveToken(token); 
+          localStorage.setItem('user', JSON.stringify(response.user)); 
           this.router.navigate(['/personalTasks']);
         } else {
-          console.warn('No se recibió un token en la respuesta');
+          console.warn('No se recibió un token o la información del usuario en la respuesta');
         }
       },
       error: (err) => {

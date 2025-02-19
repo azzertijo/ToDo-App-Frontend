@@ -17,6 +17,7 @@ export class DashboardComponent {
   listType: 'personal' | 'group' = 'personal';
   isAdmin: boolean = false;
   groupName?: string; 
+ 
   private readonly modalSvc = inject(ModalService);
   private readonly router = inject(Router);
 
@@ -26,7 +27,7 @@ export class DashboardComponent {
 
   onEditUser(): void {
       this.modalSvc.open(EditUserComponent, {
-      data: { username: 'Marcos López' }, maxWidth: 380, minWidth: 380,maxHeight: 380, minHeight: 380,
+      data: this.getUser(), maxWidth: 380, minWidth: 380,maxHeight: 380, minHeight: 380,
     });
   }
 
@@ -36,6 +37,10 @@ export class DashboardComponent {
     //this.isAdmin = isAdmin;
     //return this.listType, this.groupName, this.isAdmin;
   //}
+
+  getUser(){
+    return JSON.parse(localStorage.getItem('user')!);
+  }
 
   onOpenPersonal(): void {
     //this.loadList('personal');

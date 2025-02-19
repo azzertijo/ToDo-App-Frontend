@@ -11,7 +11,7 @@ import { TaskService } from '../../../services/task.service';
 import { Observable } from 'rxjs';
 import { Task, TaskResponse } from '../../../interfaces/task';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from '../../../services/Auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,13 +24,14 @@ import { Router } from '@angular/router';
 })
 export class TaskListComponent implements OnInit {
   private readonly modalSvc = inject(ModalService);
+  
 
   constructor (
     private readonly taskService: TaskService,
     private router: Router,
     private authService: AuthService
-  
   ) {}
+  
 
   listType: 'personal' | 'group' = 'personal';
   isAdmin: boolean = false;
@@ -49,13 +50,14 @@ export class TaskListComponent implements OnInit {
     { name: 'Marcos López'}
   ];
 
+
   ngOnInit() {
     // CODIGO PARA PROBAR DIFERENTES TIPOS DE GRUPOS
     //this.loadList('group', 'Grupo 1', true);  // Prueba como ADMIN de un grupo
     //this.loadList('group', 'Grupo 1', false); // Prueba como MIEMBRO de un grupo
     //this.loadList('personal');  // Prueba la LISTA PERSONAL
-
-    this.taskService.getTasks().subscribe((response: Task[]) => {
+    let id = this.getUser();
+    this.taskService.getPersonalTasks(id).subscribe((response: Task[]) => {
       Array.prototype.push.apply(this.taskList, response);
       console.log(response);
     });
@@ -70,6 +72,12 @@ export class TaskListComponent implements OnInit {
   //toggleTaskStatus(index: number) {
     //this.tasks[index].done = !this.tasks[index].done;
   //}
+
+  getUser(){
+    const user = JSON.parse(localStorage.getItem('user')!);
+    let id = user.id;
+    return id;
+  }
 
   onClickTask(task: Task) {
     this.modalSvc.open(TaskDetailComponent, {

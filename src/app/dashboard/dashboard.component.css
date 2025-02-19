@@ -4,22 +4,51 @@
 }
 
 .sidebar {
-  width: 80px;
+  width: 100px;
   background-color: #754C29;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 10px;
+  overflow-y: hidden;
+  overflow: hidden; 
 }
+
 
 .user-profile {
   text-align: center;
   color: white;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-name {
+  word-wrap: break-word;
+  white-space: normal;
+  text-align: center;
+  max-width: 90%; 
+  display: block;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  gap: 5px; 
+  min-height: 0;
+  overflow-y: auto; 
 }
 
 .menu button {
   width: 50px;
   height: 50px;
+  min-height: 50px;
   margin: 10px;
   border: none;
   border-radius: 50%;
@@ -29,6 +58,7 @@
 
 .add-group {
   background-color: #C7E65B;
+  margin-top: auto; /* Empuja el botón hacia abajo */
 }
 .content {
   flex-grow: 1;

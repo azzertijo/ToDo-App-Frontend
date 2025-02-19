@@ -2,7 +2,7 @@
     <aside class="sidebar">
       <div class="user-profile">
         <img src=".\assets\user-avatar.png" alt="Usuario" (click)="onEditUser()">
-        <p>Marcos López</p>
+        <p class="user-name">{{ this.getUser().name }}</p>
       </div>
      
       <!--Agregar dinamicamente los grupos-->
@@ -10,6 +10,10 @@
         <button (click)="onOpenPersonal()"> P </button>
         <button (click)="onOpenGroup1()"> G1 </button>
         <button (click)="onOpenGroup2()"> G2 </button>
+        <button (click)="onOpenPersonal()"> P </button>
+        <button (click)="onOpenGroup1()"> G1 </button>
+        <button (click)="onOpenGroup2()"> G2 </button>
+
         <button class="add-group" (click)= "onAddGroup()"> + </button>
       </nav>
     </aside>

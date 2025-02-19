@@ -2,10 +2,10 @@
     <img class="profile-pic" src="assets/user-avatar.png" alt="Usuario" />
   
     <label class="label">Usuario</label>
-    <input type="text" class="input-field" value="Marcos López" readonly />
+    <input type="text" class="input-field" value="{{ data.name }}" readonly />
   
     <label class="label">Código de invitación:</label>
-    <button class="invite-code">ABXL3</button>
+    <button class="invite-code">{{ data.code }}</button>
   
     <button class="save-button">guardar</button>
   </div>

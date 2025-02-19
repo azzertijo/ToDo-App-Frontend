@@ -24,6 +24,10 @@ export class TaskService {
     return this.httpclient.get<Task[]>(`${environment.api}/tasks`);
   }
 
+  getPersonalTasks(id:number): Observable<Task[]> {
+    return this.httpclient.get<Task[]>(`${environment.api}/tasks/personal/${id}`,{withCredentials: true}); 
+  }
+
   getTaskById(id: number): Observable<TaskResponse> {
     return this.httpclient.get<TaskResponse>(`${environment.api}/tasks`, { params: { id: id } });
   }
