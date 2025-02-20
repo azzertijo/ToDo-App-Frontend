@@ -24,18 +24,18 @@ import { Router } from '@angular/router';
 })
 export class TaskListComponent implements OnInit {
   private readonly modalSvc = inject(ModalService);
-  
+
 
   constructor (
     private readonly taskService: TaskService,
     private router: Router,
     private authService: AuthService
   ) {}
-  
+
 
   listType: 'personal' | 'group' = 'personal';
   isAdmin: boolean = false;
-  groupName?: string; 
+  groupName?: string;
   taskList: Task[] = [];
 
   members = [
@@ -75,7 +75,7 @@ export class TaskListComponent implements OnInit {
 
   getUser(){
     const user = JSON.parse(localStorage.getItem('user')!);
-    let id = user.id;
+    let id = user? user.id : 0;
     return id;
   }
 
@@ -83,8 +83,8 @@ export class TaskListComponent implements OnInit {
     this.modalSvc.open(TaskDetailComponent, {
       data: task,
       maxWidth: 400,
-      minWidth: 400, 
-      maxHeight: 520, 
+      minWidth: 400,
+      maxHeight: 520,
       minHeight: 520
     });
   }
@@ -93,12 +93,12 @@ export class TaskListComponent implements OnInit {
     this.modalSvc.open(GroupDetailComponent, {
       data: {members: this.members, groupName: this.groupName},
       maxWidth: 400,
-      minWidth: 400, 
-      maxHeight: 520, 
+      minWidth: 400,
+      maxHeight: 520,
       minHeight: 520
     });
   }
-  
+
 
   onClickNewTask(): void {
     this.modalSvc.open(AddTaskComponent, {maxWidth: 300, minWidth: 300, maxHeight: 420, minHeight: 420});

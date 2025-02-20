@@ -16,8 +16,8 @@ import { EditUserComponent } from './pages/edit-user/edit-user.component';
 export class DashboardComponent {
   listType: 'personal' | 'group' = 'personal';
   isAdmin: boolean = false;
-  groupName?: string; 
- 
+  groupName?: string;
+
   private readonly modalSvc = inject(ModalService);
   private readonly router = inject(Router);
 
@@ -46,7 +46,7 @@ export class DashboardComponent {
     //this.loadList('personal');
     this.router.navigate(['/personalTasks']);
   }
-  
+
   onOpenGroup1(): void {
     //this.loadList('group', 'Grupo 1', false);
     this.router.navigate(['/groupTasks/Grupo2']);

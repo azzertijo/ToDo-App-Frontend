@@ -15,7 +15,7 @@ interface State {
 export class TaskService {
 
   constructor(private readonly httpclient: HttpClient) {}
-  
+
   createTask(title: string, location: string, description: string):Observable<Task> {
     return this.httpclient.post<Task>(`${environment.api}/tasks`, { title, location, description });
   }
@@ -25,7 +25,7 @@ export class TaskService {
   }
 
   getPersonalTasks(id:number): Observable<Task[]> {
-    return this.httpclient.get<Task[]>(`${environment.api}/tasks/personal/${id}`,{withCredentials: true}); 
+    return this.httpclient.get<Task[]>(`${environment.api}/tasks/personal`);
   }
 
   getTaskById(id: number): Observable<TaskResponse> {
@@ -44,6 +44,6 @@ export class TaskService {
     return this.httpclient.patch<TaskResponse>(`${environment.api}/tasks`, { params: { id: id, status: status } });
   }
 
-  
+
 
 }

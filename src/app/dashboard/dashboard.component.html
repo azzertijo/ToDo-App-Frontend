@@ -2,9 +2,10 @@
     <aside class="sidebar">
       <div class="user-profile">
         <img src=".\assets\user-avatar.png" alt="Usuario" (click)="onEditUser()">
-        <p class="user-name">{{ this.getUser().name }}</p>
+        <!-- Esto ocasiona error cuando el usuario no está porque es nulo entonces no puede acceder a .name -->
+        <!-- <p class="user-name">{{ this.getUser().name }}</p> -->
       </div>
-     
+
       <!--Agregar dinamicamente los grupos-->
       <nav class="menu">
         <button (click)="onOpenPersonal()"> P </button>
@@ -17,9 +18,8 @@
         <button class="add-group" (click)= "onAddGroup()"> + </button>
       </nav>
     </aside>
-  
+
     <main class="content">
       <router-outlet></router-outlet>
     </main>
   </div>
-  
