@@ -10,5 +10,5 @@ export interface Task {
 }
 
 export interface TaskResponse {
-    taskList: Task[];
+    tasks: Task[];
 }

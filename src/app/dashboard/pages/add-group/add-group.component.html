@@ -7,16 +7,16 @@
     <form>
       <div class="form-group">
         <label for="title">Nombre</label>
-        <input id="title" type="text" class="form-control" />
+        <input id="title" type="text" class="form-control" [(ngModel)]="name" name="name"/>
       </div>
   
   
       <div class="form-group">
         <label for="description">Descripción</label>
-        <textarea id="description" rows="3" class="form-control"></textarea>
+        <textarea id="description" rows="3" class="form-control" [(ngModel)]="description" name="description"></textarea>
       </div>
   
-      <button type="submit" class="create-button" mat-dialog-close>
+      <button type="submit" class="create-button" mat-dialog-close (click)="createGroup()">
         Crear
       </button>
     </form>

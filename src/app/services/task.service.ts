@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, Injectable, signal } from '@angular/core';
 import { environment } from '../environment/environment';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { Task, TaskResponse } from '../interfaces/task';
+import { User } from '../interfaces/user';
 
 interface State {
   tasks: Task[];
@@ -17,14 +18,18 @@ export class TaskService {
   constructor(private readonly httpclient: HttpClient) {}
 
   createTask(title: string, location: string, description: string):Observable<Task> {
-    return this.httpclient.post<Task>(`${environment.api}/tasks`, { title, location, description });
+    return this.httpclient.post<Task>(`${environment.api}/tasks`, { title, location, description }, { withCredentials: true });
+  }
+
+  createGroupTask(title: string, location: string, description: string, groupId: number ):Observable<Task> {
+    return this.httpclient.post<Task>(`${environment.api}/tasks`, { title, location, description, groupId }, { withCredentials: true });
   }
 
   getTasks(): Observable<Task[]> {
     return this.httpclient.get<Task[]>(`${environment.api}/tasks`);
   }
 
-  getPersonalTasks(id:number): Observable<Task[]> {
+  getPersonalTasks(): Observable<Task[]> {
     return this.httpclient.get<Task[]>(`${environment.api}/tasks/personal`);
   }
 
@@ -40,8 +45,8 @@ export class TaskService {
     return this.httpclient.patch<TaskResponse>(`${environment.api}/tasks`, { params: { id: id } });
   }
 
-  completeTask(id: number, status: string): Observable<TaskResponse> {
-    return this.httpclient.patch<TaskResponse>(`${environment.api}/tasks`, { params: { id: id, status: status } });
+  completeTask(id: number, status: string): Observable<Task> {
+    return this.httpclient.patch<Task>(`${environment.api}/tasks/${id}/${status}`, {}, { withCredentials: true });
   }
 
 

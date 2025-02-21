@@ -1,51 +1,75 @@
 <div class="task-list-container">
 
-  <button class="logout-btn" (click)="logout()"> Cerrar sesión</button>
+  <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
 
-  <button *ngIf="listType === 'group'" class="invite-btn" (click)="onCode()">Invitar miembros +</button>
+  <button *ngIf="group" class="invite-btn" (click)="onCode()">Invitar miembros +</button>
 
   <div class="header-container">
-      
-      <h1 class="title">
-          {{ listType === 'personal' ? 'Lista personal' : groupName }}
-      </h1>
-
-      
-      <button *ngIf="isAdmin" class="settings-btn">⚙</button>
-      <button *ngIf="!isAdmin && listType === 'group'" class="info-btn" (click)="onClickGroupDetail()">ℹ</button>
-  </div>
-
-  
-  <div class="filter-buttons">
-      <button class="btn active">Hechas</button>
-      <button class="btn">No hechas</button>
-      <button class="btn">↕</button>
-  </div>
-
-
-   
-  @if(getUser()==-1) {
-    <h1 class="title">
-        No hay nada
-    </h1>
-} @else {
-        <div class="task-card" *ngFor="let task of taskList; index as i">
-            
-            <div class="task-info" (click)="onClickTask(task)">
-                <h3>{{ task.title }}</h3>
-                <p>{{ task.hour | date:"MMM dd, yyyy 'at' hh:mm a"}}</p>
-            </div>
-            @if (task.status === 'done') {
-                <div class="status-icon" [ngClass]=" 'done'" >
-                    <!--(click)="toggleTaskStatus(i)-->
-                </div>
-            }@else {
-                <div class="status-icon" [ngClass]=" 'not-done'">
-                    <!--(click)="toggleTaskStatus(i)-->
-                </div>
-            }
-        </div>
+    @if(groupName){
+      <h1 class="title">{{ groupName }}</h1>
+    }@else{
+      <h1 class="title">Lista personal</h1>
     }
 
-  <button class="add-task-button" (click)="onClickNewTask()">+</button>
+    <button *ngIf="isAdmin" class="settings-btn" (click)="onClickAdminGroup()">⚙</button>
+    <button *ngIf="!isAdmin && group" class="info-btn" (click)="onClickGroupDetail()">ℹ</button>
+  </div>
+
+  <div class="filter-buttons">
+    <button class="btn" (click)="filterTasks('done')">Hechas</button>
+    <button class="btn" (click)="filterTasks('pending')">No hechas</button>
+    <button class="btn" (click)="filterTasks('')">↕</button>
+  </div>
+
+  <div *ngIf="listType === 'personal'; else groupView">
+    <!-- Personal view -->
+    <div class="card-container">
+      <div *ngIf="taskList">
+        <div class="task-card" *ngFor="let task of taskList; index as i">
+          <div class="task-info" (click)="onClickTask(task)">
+            <h3>{{ task.title }}</h3>
+            <p>{{ task.hour | date:"MMM dd, yyyy 'at' hh:mm a"}}</p>
+          </div>
+          <div class="status-icon" [ngClass]="task.status === 'done' ? 'done' : 'not-done'"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="add-task-button" (click)="onClickNewTask()">+</button>
+  </div>
+
+  <ng-template #groupView>
+    <div *ngIf="isAdmin; else nonAdminView">
+      <!-- Admin view -->
+      <div class="card-container">
+        <div *ngIf="taskGroupList">
+          <div class="task-card" *ngFor="let task of taskGroupList; index as i">
+            <div class="task-info" (click)="onClickTask(task)">
+              <h3>{{ task.title }}</h3>
+              <p>{{ task.hour | date:"MMM dd, yyyy 'at' hh:mm a"}}</p>
+            </div>
+            <div class="status-icon" [ngClass]="task.status === 'done' ? 'done' : 'not-done'"></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="add-task-button" (click)="onClickNewTask()">+</button>
+    </div>
+
+    <ng-template #nonAdminView>
+      <!-- Non-admin view -->
+      <div class="card-container">
+        <div *ngIf="taskGroupList">
+          <div class="task-card" *ngFor="let task of taskGroupList; index as i">
+            <div class="task-info" (click)="onClickTask(task)">
+              <h3>{{ task.title }}</h3>
+              <p>{{ task.hour | date:"MMM dd, yyyy 'at' hh:mm a"}}</p>
+            </div>
+            <div class="status-icon" [ngClass]="task.status === 'done' ? 'done' : 'not-done'"></div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+
 </div>

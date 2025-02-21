@@ -20,8 +20,11 @@ export class UserService {
     return this.httpclient.post(`${environment.api}/auth/register`, { name, password, icon:'Prueba'} );
   }
 
-  updateUser(id:number, name: string):Observable<User> {
-    return this.httpclient.post(`${environment.api}/user/${id}`, { name });
+  updateUser(name: string, id: number):Observable<User> {
+    return this.httpclient.patch(`${environment.api}/users/${id}`, { name }, { withCredentials: true });
   }
 
+    getUserInfo():Observable<User> {
+      return this.httpclient.get<User>(`${environment.api}/users/profile/me`, { withCredentials: true });
+    }
 }

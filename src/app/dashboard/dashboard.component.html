@@ -2,21 +2,19 @@
     <aside class="sidebar">
       <div class="user-profile">
         <img src=".\assets\user-avatar.png" alt="Usuario" (click)="onEditUser()">
-        <!-- Esto ocasiona error cuando el usuario no está porque es nulo entonces no puede acceder a .name -->
-        <!-- <p class="user-name">{{ this.getUser().name }}</p> -->
+        <p class="user-name">{{ this.name}}</p>
       </div>
 
-      <!--Agregar dinamicamente los grupos-->
       <nav class="menu">
-        <button (click)="onOpenPersonal()"> P </button>
-        <button (click)="onOpenGroup1()"> G1 </button>
-        <button (click)="onOpenGroup2()"> G2 </button>
-        <button (click)="onOpenPersonal()"> P </button>
-        <button (click)="onOpenGroup1()"> G1 </button>
-        <button (click)="onOpenGroup2()"> G2 </button>
+        <button class="personal" (click)="onOpenPersonal()">P</button>
+        <ng-container *ngIf="groupList">
+          <button (click)="onOpenGroup(group)" *ngFor="let group of groupList; index as i">
+            {{ group.name.charAt(0).toUpperCase() }}
+          </button>
+        </ng-container>
 
-        <button class="add-group" (click)= "onAddGroup()"> + </button>
       </nav>
+      <nav class="menu-add-group"><button class="add-group" (click)="onAddGroup()"> + </button></nav>
     </aside>
 
     <main class="content">

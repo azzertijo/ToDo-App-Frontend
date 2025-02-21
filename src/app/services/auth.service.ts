@@ -14,7 +14,6 @@ export class AuthService {
 
   saveToken(token: string): void {
     localStorage.setItem('authToken', token);
-    //localStorage.setItem('user', JSON.stringify(user));
     document.cookie = `authToken=${token}; path=/;`; 
   }
 
@@ -23,8 +22,7 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('authToken');  
-    localStorage.removeItem('user');       
+    localStorage.removeItem('authToken');      
     sessionStorage.clear();                
     document.cookie = 'authToken=; Max-Age=0; path=/'; 
     this.router.navigate(['/login']);      

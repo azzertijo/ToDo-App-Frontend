@@ -1,0 +1,162 @@
+.modal-content {
+  background: #f5f5dc;
+  padding: 25px;
+  border-radius: 12px;
+  min-height: 550px;
+  max-height: 550px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mat-dialog-title {
+  color: #8b572a;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #d38d5f;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
+  transition: background 0.2s;
+}
+
+.close-button:hover {
+  background: #b86b3e;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5a3e1b;
+  margin-bottom: 10px;
+}
+
+.members-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 280px; 
+  overflow-y: auto; 
+  text-align: center;
+  border: 1px solid #d9c2a3; 
+  border-radius: 8px;
+  padding: 8px;
+  background: #fffaf0;
+}
+
+.member-item {
+  padding: 10px;
+  border-bottom: 1px solid #d9c2a3;
+  font-size: 16px;
+  color: #5a3e1b;
+}
+
+.member-item:last-child {
+  border-bottom: none;
+}
+
+.members-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.members-list::-webkit-scrollbar-thumb {
+  background-color: #c59b77;
+  border-radius: 4px;
+}
+
+.members-list::-webkit-scrollbar-track {
+  background-color: #f5f5dc;
+  border-radius: 4px;
+}
+
+.exit-button {
+  width: 160px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #e1a556;
+  color: black;
+  margin-top: 20px;
+  transition: background 0.2s;
+}
+
+.exit-button:hover {
+  background-color: #d1944c;
+}
+
+.mat-label {
+  color: #8b572a;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #d38d5f;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; 
+  height: 40px; 
+  font-size: 24px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #5a3e1b; 
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.create-button {
+  width: 180px;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #e1a556; 
+  color: black;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+

@@ -1,3 +1,6 @@
+import { Task } from "./task";
+import { User } from "./user";
+
 export interface Group {
         id: number;
         name: string;
@@ -7,4 +10,6 @@ export interface Group {
 
 export interface GroupResponse {
     groupList: Group[];
+    members: User[];
+    tasks: Task[];
 }

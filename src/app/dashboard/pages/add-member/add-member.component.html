@@ -7,10 +7,10 @@
     <form>
       <div class="form-group">
         <label for="codigo">Ingresa el codigo del usuario</label>
-        <textarea id="codigo" rows="3" class="form-control"></textarea>
+        <textarea id="codigo" rows="3" class="form-control" [(ngModel)]="code" name="code"></textarea>
       </div>
   
-      <button type="submit" class="create-button" mat-dialog-close>
+      <button type="submit" class="create-button" (click)="addMemberToGroup()">
         Agregar
       </button>
     </form>

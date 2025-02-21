@@ -1,5 +1,6 @@
 <div class="modal-content">
     <h2 class="mat-dialog-title">{{ data.title }}</h2>
+    <h3>{{ data.location }}</h3>
     <button mat-icon-button class="close-button" mat-dialog-close>
       ✖
     </button>
@@ -10,10 +11,17 @@
     </div>
 
     <div class="modal-footer">
-      <button class="complete-button" mat-dialog-close>
-        Completar
-      </button>
-      <div [class]="data.done ? 'status-icon done' : 'status-icon not-done'"></div>
+      @if(data.status==='done'){
+        <button class="complete-button" mat-dialog-close (click)="completeTask('pending')">
+          Completar
+        </button>
+      }@else{
+        <button class="complete-button" mat-dialog-close (click)="completeTask('done')">
+          Completar
+        </button>
+      }
+      
+      <div [class]="data.status==='done' ? 'status-icon done' : 'status-icon not-done'"></div>
     </div>
     
 </div>

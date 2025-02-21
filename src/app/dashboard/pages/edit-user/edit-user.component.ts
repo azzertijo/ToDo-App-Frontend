@@ -3,6 +3,7 @@ import { Inject, Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -19,7 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class EditUserComponent {
   constructor(
     private readonly dialogRef: MatDialogRef<EditUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   close(): void {

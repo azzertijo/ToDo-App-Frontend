@@ -75,6 +75,16 @@
   margin-bottom: 10px;
 }
 
+.card-container {
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  gap: 5px;
+  overflow: auto;
+  max-height: 685px; 
+  padding-right: 5px; 
+}
+
 .task-info {
   width: 80%;
 }
@@ -131,11 +141,11 @@
 
 .logout-btn {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 2px;
   background-color: #e63946;
   color: white;
   border: none;
+  padding-right: 50%;
   padding: 10px 15px;
   border-radius: 5px;
   font-size: 14px;
@@ -146,4 +156,13 @@
 
 .logout-btn:hover {
   background-color: #d62828;
+}
+
+.card-container::-webkit-scrollbar {
+  display: none;
+}
+
+.card-container {
+-ms-overflow-style: none; 
+scrollbar-width: none;  
 }

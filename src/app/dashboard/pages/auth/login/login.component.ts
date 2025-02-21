@@ -38,9 +38,8 @@ export class LoginComponent {
         const token = response.auth_token;
         console.log('Token recibido desde el backend:', token);
   
-        if (token && response.user) {
+        if (token) {
           this.authService.saveToken(token); 
-          localStorage.setItem('user', JSON.stringify(response.user)); 
           this.router.navigate(['/personalTasks']);
         } else {
           console.warn('No se recibió un token o la información del usuario en la respuesta');
