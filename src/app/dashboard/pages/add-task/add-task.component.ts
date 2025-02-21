@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { TaskService } from '../../../services/task.service';
@@ -25,6 +25,7 @@ export class AddTaskComponent {
 private readonly dialogRef = inject(MatDialogRef<AddTaskComponent>);
 private readonly taskService = inject(TaskService);
 private readonly taskUpdateService = inject(TaskUpdateService);
+constructor(@Inject(MAT_DIALOG_DATA) public data: any){}
 
   title: string = '';
   location: string = '';
@@ -34,14 +35,26 @@ private readonly taskUpdateService = inject(TaskUpdateService);
   submitTask(): void {
     if (!this.title.trim()) return; 
 
-    this.taskService.createTask(this.title, this.location, this.description).subscribe({
-      next: (task: Task) => {
-        alert('Tarea creada: ' + task.title);
-        this.taskUpdateService.notifyTaskCreated(task);
-        this.dialogRef.close(task); 
-      },
-      error: (err) => console.error('Error al crear la tarea:', err)
-    });
+    if(!this.data){
+      this.taskService.createTask(this.title, this.location, this.description).subscribe({
+        next: (task: Task) => {
+          alert('Tarea creada: ' + task.title);
+          this.taskUpdateService.notifyTaskCreated(task);
+          this.dialogRef.close(task); 
+        },
+        error: (err) => console.error('Error al crear la tarea:', err)
+      });
+    }else{
+      this.taskService.createGroupTask(this.title, this.location, this.description, this.data.groupId).subscribe({
+        next: (task: Task) => {
+          alert('Tarea de grupo creada: ' + task.title);
+          this.taskUpdateService.notifyTaskCreated(task);
+          this.dialogRef.close(task); 
+        },
+        error: (err) => console.error('Error al crear la tarea:', err)
+      });
+    }
+    
   }
 
   close(): void {

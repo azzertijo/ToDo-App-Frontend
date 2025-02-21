@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <button class="add-task-button" (click)="onClickNewTask()">+</button>
+      <button class="add-task-button" (click)="onClickNewGroupTask(group.id)">+</button>
     </div>
 
     <ng-template #nonAdminView>
@@ -68,6 +68,7 @@
             <div class="status-icon" [ngClass]="task.status === 'done' ? 'done' : 'not-done'"></div>
           </div>
         </div>
+        <button class="add-task-button" (click)="onClickNewGroupTask(group.id)">+</button>
       </div>
     </ng-template>
   </ng-template>

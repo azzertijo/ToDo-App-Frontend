@@ -106,7 +106,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
       this.filteredTaskList = this.taskList;
     });
   }
-  
+
   getGroupMembers(){
     if(this.group) { 
       this.groupService.getGroupMembers(this.group.id).subscribe((response: any) => {
@@ -158,6 +158,13 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   onClickNewTask(): void {
     const dialogRef = this.modalSvc.open(AddTaskComponent, {maxWidth: 300, minWidth: 300, maxHeight: 420, minHeight: 420});
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadUserTasks(); 
+    });
+  }
+
+  onClickNewGroupTask(groupId: number): void {
+    const dialogRef = this.modalSvc.open(AddTaskComponent, {data:{groupId: groupId},maxWidth: 300, minWidth: 300, maxHeight: 420, minHeight: 420});
     dialogRef.afterClosed().subscribe(() => {
       this.loadUserTasks(); 
     });
