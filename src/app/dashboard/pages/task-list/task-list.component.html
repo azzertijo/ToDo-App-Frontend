@@ -21,7 +21,7 @@
     <button class="btn" (click)="filterTasks('')">↕</button>
   </div>
 
-  <div *ngIf="listType === 'personal'; else groupView">
+  <div *ngIf="!group; else groupView">
     <!-- Personal view -->
     <div class="card-container">
       <div *ngIf="taskList">

@@ -94,9 +94,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
       this.group = response; 
       this.groupName = this.group.name;
       this.description = this.group.description;
+      this.taskGroupList = response.tasks as Task[];
       this.isAdmin = this.userGroupService.getIsAdmin();
       this.getGroupMembers();
-      this.loadGroupTasks();
     });
   }
 
@@ -106,17 +106,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
       this.filteredTaskList = this.taskList;
     });
   }
-
-  loadGroupTasks(){
-    if (this.group) {
-      this.groupService.getGroupTasks(this.group.id).subscribe((response: any) => {
-        console.log('Tareas del grupo:', response.tasks);
-        this.taskGroupList = response.tasks as Task[];
-        console.log('Tareas del grupo metodo:', this.taskGroupList);
-      });
-    }
-  }
-
+  
   getGroupMembers(){
     if(this.group) { 
       this.groupService.getGroupMembers(this.group.id).subscribe((response: any) => {
